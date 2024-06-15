@@ -24,4 +24,4 @@ function enqueueRequest(clientId,request){
     });
 }
 
-module.exports=createQueue
+module.exports={createQueue,enqueueRequest};
