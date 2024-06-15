@@ -8,6 +8,10 @@ const bodyParser=require('body-parser');
   app.use(bodyParser.json());
 
   const users={};
+
+//   app.get('/',(req,res)=>{
+//     res.send('auth server is running');
+//   })
   app.post('/register',async(req,res)=>{
     const {username,password}=req.body;
     const hashedPw=await bcrypt.hash(password);
@@ -16,13 +20,13 @@ const bodyParser=require('body-parser');
   });
 
   app.post('/login',async(req,res)=>{
-    const{username,password}req.body;
+    const{username,password}=req.body;
     const hashedPw=users[username];
     if(hashedPw&& await bcrypt.compare(password,hashedPw)){
-        const token=jwt.sign({username},'secret',{expiresIn:1h});
+        const token=jwt.sign({username},'secret',{expiresIn:'1h'});
         res.json({token});
     }else{
-        res.status(401).send(Invalid credentials);
+        res.status(401).send('Invalid credentials');
     }
   });
 
