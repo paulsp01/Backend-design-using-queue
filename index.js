@@ -62,6 +62,6 @@ const mongoose=require('mongoose');
 
 
 
-  app.listen(8000,()=>{
-    console.log("Auth server running on port 8000")
+  app.listen(1000,()=>{
+    console.log("Auth server running on port 1000")
   });

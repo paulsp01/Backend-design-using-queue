@@ -1,0 +1,18 @@
+# Use the official Node.js 18 image
+FROM node:18
+
+# Set the working directory
+WORKDIR /app
+
+# Install app dependencies
+COPY package*.json ./
+RUN npm install --only=prod
+
+# Bundle app source
+COPY . .
+
+# Expose the port on which the app runs
+EXPOSE 9000
+
+# Command to run the app
+CMD ["npm", "start"]
