@@ -32,30 +32,23 @@ app.post('/request',authenticateToken,(req,res)=>{
 });
 
 
-// app.post("/createQueue", async (req, res) => {
-//   const { clientId } = req.body;
+app.post("/createQueue", (req, res) => {
+  const { clientId } = req.body;
 
-//   try {
-//     await createQueue(clientId);
-//     res.status(200).send("Queue creation request received");
-//   } catch (err) {
-//     console.error("Error creating queue:", err);
-//     res.status(500).send("Failed to create queue");
-//   }
-// });
+  createQueue(clientId);
+  
+  res.status(200).send("Queue creation request received");
+});
 
-// // Endpoint to enqueue a request for a client
-// app.post("/enqueueRequest", async (req, res) => {
-//   const { clientId, request } = req.body;
+// Endpoint to enqueue a request for a client
+app.post("/enqueueRequest", (req, res) => {
+  const { clientId, request } = req.body;
 
-//   try {
-//     await enqueueRequest(clientId, request);
-//     res.status(200).send("Request enqueued successfully");
-//   } catch (err) {
-//     console.error("Error enqueuing request:", err);
-//     res.status(500).send("Failed to enqueue request");
-//   }
-// });
+  enqueueRequest(clientId, request);
+
+  res.status(200).send("Request enqueued successfully");
+});
+
 app.listen(9001,()=>{
     console.log('API server running on port 9001');
 });
